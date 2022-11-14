@@ -8,7 +8,6 @@ scheduled_date - Date of the scheduled appointment
 scheduled_time_start - Time of the scheduled appointment starts
 scheduled_time_end - Time of the scheduled appointment starts
 scheduled_day_of_week - Which day of the week appointment falls into
-weather - Sunny, windy, rainy, snow etc.,
 service_type - Either of the following
     DEEP_TISSUE - Deep Tissue Massage
     SWEDISH - Swedish Massage
@@ -46,6 +45,14 @@ channel - Either of the following
 - All appointments are estimated to be 1 hour long 
 - All these appointments occurred between 1st January 2018 to 31st December 2019 (Before COVID-19 pandemic)
 - This institution is located in Pleasanton, CA (appropriate weather data is used)
+- Total reservations to be generated. Assuming that reservations are at 80% capacity
+  - 50 weeks in a year (excluding time for holidays)
+  - 8 service providers * 12 hours * 6 days = 576
+  - 8 service providers * 10 hours * 1 sunday = 80
+  - Total available productive hours in week = 656
+  - Total available for year - 656 * 50 = 32800
+  - Total available for 2 year time period = 65600
+  - 80% reservation capacity for this time period = 52480
 
 ## Generation 
 
