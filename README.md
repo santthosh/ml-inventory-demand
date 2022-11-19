@@ -45,6 +45,8 @@ We have used an industry standard process called [CRISP-DM](https://mo-pcco.s3.u
 
 ## Findings and Results
 
+Based on our analysis and modeling using different machine learning techniques, **Random Forest Classifier** is best suited for our use case. Below is a comparison of different modeling techniques we used and related hyper-parameters
+
 ###
 
 ### Recommendations
