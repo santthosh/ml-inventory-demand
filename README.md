@@ -27,7 +27,7 @@ _Since this is a time series problem, we will use techniques like trend analysis
 
 * What are our expected results?
 
-_Based on how easy or difficult to fill up those slots, label the available appointments as 'Low Demand' or 'High Demand'._
+_Based on how easy or difficult to fill up those slots, label the available appointments as 'Low Demand / Idle' or 'High Demand / Busy'._
 
 * Why is this project important?
 
@@ -39,20 +39,62 @@ _By building an ML-based solution that provides recommendations to optimize sche
 
 ## Methodology 
 
-We have used an industry standard process called [CRISP-DM](https://mo-pcco.s3.us-east-1.amazonaws.com/BH-PCMLAI/module_11/readings_starter.zip) to analyze our datasets
+We have used an industry standard process called [CRISP-DM](https://mo-pcco.s3.us-east-1.amazonaws.com/BH-PCMLAI/module_11/readings_starter.zip) to approach problems like this. We will be using this methodology for our solution.
 
 ![CRISP-DM](./images/CRISP-DM_Process_Diagram.png)
 
-## Findings and Results
+In the absence of access to a real dataset, we have [used this script](./data/generate.py) to generate synthetic [dataset](./data/reservations-1.csv) for a business called 'Relax Spa'.
 
-Based on our analysis and modeling using different machine learning techniques, **Random Forest Classifier** is best suited for our use case. Below is a comparison of different modeling techniques we used and related hyper-parameters
+- Relax Spa is open during the following hours 
+   * Mon - Sat 9am - 9pm
+   * Sun 10am - 8pm
+- All appointments are 1 hour long 
+- All these appointments occurred between 1st January 2018 to 31st December 2019 (Before COVID-19 pandemic)
+- Relax Spa is located in Pleasanton, CA
 
-###
+### Modeling Results
 
-### Recommendations
+Our initial approaches to understand the supply and demand for appointments as a time series model did not work. There were no direct correlations we could identify between past appointments and future ones.
+
+Based on our analysis and modeling using different machine learning techniques, we identified that **Random Forest Classifier** is best suited for our use case. 
+
+Below is a comparison of different modeling techniques we used and related hyper parameters that provide the optimal results.
+
+![modeling_results](./images/model-comparison.png)
+
+With the optimal hyper parameters for Random Forest Classifier we obtain the final model, below is the confusion matrix for test and training sets.
+
+![rfc](./images/random-forest-classifier.png)
+
+### Finding and Observations
+
+Using the model, we can predict future supply and demand for appointments. Here are the predictions we did for the next three weeks (11/28)
+
+![demand-11-28](./images/demand-11-28.png)
+
+<hr/>
+
+![demand-12-05](./images/demand-12-05.png)
+
+<hr/>
+
+![demand-12-12](./images/demand-12-12.png)
+
+As we can observe there are subtle variations in the demand across all the 3 weeks but the general trend stays, across weeks. We are sure to observe much better trends with real data.
+
+### Recommendations and Next Steps
+
+Hour of the appointment has the most influence on the demand, followed by day of the week. Day of the month and month does have relatively less influence
+
+![features.png](./images/features.png)
+
+Provisioning more service providers during busy hours and easing them during the less idle hours will yield benefits to the business 
+
+For future iterations obtaining richer datasets that include campaigns, happy hour discounts, etc., can provide more valuable insights into the drivers for demand in appointment slots
 
 ## References
 
+* [Modeling Notebook](./notebook.ipynb)
 * [Wellness industry is worth 4.2 trillion dollars](https://policyadvice.net/insurance/insights/health-wellness-industry/)
 * [Contribution Guidelines](./CONTRIBUTING.md)
 * [License](./LICENSE)
