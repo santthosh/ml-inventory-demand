@@ -56,15 +56,15 @@ In the absence of access to a real dataset, we have [used this script](./data/ge
 
 Our initial approaches to understand the supply and demand for appointments as a time series model did not work. There were no direct correlations we could identify between past appointments and future ones.
 
-Based on our analysis and modeling using different machine learning techniques, we identified that **Random Forest Classifier** is best suited for our use case. 
+Based on our analysis and modeling using different machine learning techniques, we identified that **XGBoost Classifier** is best suited for our use case. 
 
 Below is a comparison of different modeling techniques we used and related hyper parameters that provide the optimal results.
 
 ![modeling_results](./images/model-comparison.png)
 
-With the optimal hyper parameters for Random Forest Classifier we obtain the final model, below is the confusion matrix for test and training sets.
+With the optimal hyper parameters for XGBoost Classifier we obtain the final model, below is the confusion matrix for test and training sets.
 
-![rfc](./images/random-forest-classifier.png)
+![rfc](./images/xgb-classifier.png)
 
 ### Finding and Observations
 
